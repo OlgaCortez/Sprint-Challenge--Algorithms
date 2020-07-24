@@ -1,3 +1,16 @@
+"""
+- You may use any pre-defined robot methods.
+- You may use logical operators. (if, and, or, not, etc.)
+- You may use comparison operators. (>, >=, <, <=, ==, is, etc.)
+- You may use iterators. (while, for, break, continue)
+- You may define robot helper methods, as long as they follow all the rules.
+
+- You may NOT modify any pre-defined robot methods.
+- You may NOT store any variables. (=)
+- You may NOT access any instance variables directly. (self._anything)
+- You may NOT use any Python libraries or class methods. (sorted(), etc.)
+"""
+
 class SortingRobot:
     def __init__(self, l):
         """
@@ -92,13 +105,41 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+
+
     def sort(self):
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # Bubble Sort
 
+        self.set_light_on()
+        while self.light_is_on():
+            self.swap_item()
+            while self.can_move_right():
+                self.move_right()
+                if self.compare_item() == 1:
+                    self.swap_item()
+            while self.can_move_left() and self.compare_item() is not None:
+                self.move_left()
+            self.swap_item()
+            if self.can_move_right():
+                self.move_right()
+            else:
+                self.set_light_off()
+
+"""
+- You may use any pre-defined robot methods.
+- You may use logical operators. (if, and, or, not, etc.)
+- You may use comparison operators. (>, >=, <, <=, ==, is, etc.)
+- You may use iterators. (while, for, break, continue)
+- You may define robot helper methods, as long as they follow all the rules.
+
+- You may NOT modify any pre-defined robot methods.
+- You may NOT store any variables. (=)
+- You may NOT access any instance variables directly. (self._anything)
+- You may NOT use any Python libraries or class methods. (sorted(), etc.)
+"""
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
